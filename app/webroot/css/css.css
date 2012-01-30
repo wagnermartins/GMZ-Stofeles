@@ -1,0 +1,11 @@
+/*
+ *	css load file
+*/
+
+@import url('reset.css');
+@import url('visualize.css');
+@import url('datatables.css');
+@import url('buttons.css');
+@import url('checkboxes.css');
+@import url('inputtags.css');
+@import url('main.css');
