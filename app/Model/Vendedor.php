@@ -4,7 +4,8 @@ class Vendedor extends AppModel {
     
     public $name = 'Vendedor';
     public $useTable = 'vendedores';
-    public $order = array('Vendedor.id' => 'ASC');
+    //public $hasMany = array('Venda');
+    //public $displayField = 'nome';
    
     public $validate = array(
         'username' => array(

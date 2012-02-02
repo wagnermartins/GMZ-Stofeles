@@ -31,7 +31,7 @@
                         <td>
                             <span class="button-group">
                                 <a href="#" class="button icon user">Ver Detalhes</a>
-								<?php echo $this->Html->link('Editar', array('controller' => 'vendedores', 'action' => 'edit', $vendedor['Vendedor']['id']), array('class' => 'button icon edit')) ?>
+				<?php echo $this->Html->link('Editar', array('controller' => 'vendedores', 'action' => 'edit', $vendedor['Vendedor']['id']), array('class' => 'button icon edit')) ?>
                                 <a href="#" class="button icon remove danger">Remover</a>
                             </span>
                         </td>
@@ -40,5 +40,4 @@
             </tbody>
         </table>
     </div>
-        <?php echo $this->Paginator->prev('Anterior').' '.$this->Paginator->numbers().' '.$this->Paginator->next('Próximo'); ?>
 </section>

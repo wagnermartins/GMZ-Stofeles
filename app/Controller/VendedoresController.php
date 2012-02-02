@@ -5,13 +5,13 @@ class VendedoresController extends AppController {
     public $name = 'Vendedores';
     public $uses = array('Vendedor');
     
-    function index() {
+    public function index() {
         $this->paginate = array('limit' => 10);
         $data = $this->paginate('Vendedor');
         $this->set('vendedores', $data);
     }
     
-    function add() {
+    public function add() {
         if($this->request->data) {
             if($this->Vendedor->save($this->request->data)) {
                 $this->redirect(array('controller' => 'vendedores', 'action' => 'index'));
@@ -19,7 +19,7 @@ class VendedoresController extends AppController {
         }
     }
     
-    function edit($id = null) {
+    public function edit($id = null) {
         if($this->request->data) {
             if($this->Vendedor->save($this->request->data)) {
                 $this->redirect(array('controller' => 'vendedores', 'action' => 'index'));
