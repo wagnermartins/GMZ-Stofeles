@@ -4,7 +4,6 @@ class VendedoresController extends AppController {
     
     public $name = 'Vendedores';
     public $uses = array('Vendedor');
-    public $helpers = array('Estados');
     
     public function index() {
         $this->paginate = array('limit' => 10);
@@ -13,6 +12,7 @@ class VendedoresController extends AppController {
     }
     
     public function add() {
+        $this->set('Estados', $this->Vendedor->estadosBrasil);
         if($this->request->data) {
             if($this->Vendedor->save($this->request->data)) {
                 $this->redirect(array('controller' => 'vendedores', 'action' => 'index'));
@@ -21,6 +21,7 @@ class VendedoresController extends AppController {
     }
     
     public function edit($id = null) {
+        $this->set('Estados', $this->Vendedor->estadosBrasil);
         if($this->request->data) {
             if($this->Vendedor->save($this->request->data)) {
                 $this->redirect(array('controller' => 'vendedores', 'action' => 'index'));

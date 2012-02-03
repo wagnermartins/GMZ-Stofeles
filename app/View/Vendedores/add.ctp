@@ -27,7 +27,7 @@
             </label>
             <div>
                 <?php echo $this->Form->input('password', array('class' => 'required', 'minlength' => '6', 'placeholder' => 'Senha')); ?>
-                <?php echo $this->Form->input('confirm_password', array('class' => 'required', 'minlength' => '6', 'placeholder' => 'Digite sua senha novamente')); ?>
+                <?php echo $this->Form->input('confirm_password', array('class' => 'required', 'type' => 'password', 'minlength' => '6', 'placeholder' => 'Digite sua senha novamente')); ?>
             </div>
         </section>
     </div>
@@ -52,12 +52,19 @@
                 <?php echo $this->Form->input('numero', array('class' => 'small', 'placeholder' => '123', 'div' => false)); ?>
             </div>
             <label>Cidade</label>
-            <?php echo $this->Form->input('numero', array('placeholder' => 'Cidade')); ?>
+            <?php echo $this->Form->input('cidade', array('placeholder' => 'Cidade')); ?>
             <label>Estado</label>
-            <?php echo $this->Estados->todosEstados(); ?>
-            <?php echo $this->Form->input('estado', array('placeholder' => 'Cidade')); ?>
+            <?php echo $this->Form->input('estado', array('type' => 'select', 'options' => $Estados, 'placeholder' => 'Cidade')); ?>
         </section>
-
+        
+        <section>
+            <label>CPF</label>
+            <?php echo $this->Form->input('cpf', array('placeholder' => '')); ?>
+            <label for="label">RG</label>
+            <?php echo $this->Form->input('rg', array('placeholder' => '')); ?>
+        </section>
     </div>
     <div class="clear"></div>
-    
+    <?php echo $this->Form->submit('Cadastrar', array('class' => 'button primary submit', 'div' => false)); ?>
+    <?php echo $this->Form->reset('Limpar', array('class' => 'button remove danger', 'value' => 'Limpar dados', 'div' => false)); ?>
+    <?php echo $this->Form->end(); ?>
