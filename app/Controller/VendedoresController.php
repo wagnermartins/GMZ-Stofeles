@@ -4,6 +4,7 @@ class VendedoresController extends AppController {
     
     public $name = 'Vendedores';
     public $uses = array('Vendedor');
+    public $helpers = array('Estados');
     
     public function index() {
         $this->paginate = array('limit' => 10);
