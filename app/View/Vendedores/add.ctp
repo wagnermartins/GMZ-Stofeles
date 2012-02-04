@@ -35,7 +35,7 @@
     <div class="column right">
         <section>
             <label>Nascimento</label>
-            <?php echo $this->Form->input('nascimento', array('style' => 'width:150px', 'dateFormat' => 'DMY', 'minYear' => 1940, 'maxYear' => date('Y'))); ?>            
+            <?php echo $this->Form->input('nascimento', array('monthNames' => 'false', 'separator' => ' ', 'style' => 'width:60px', 'dateFormat' => 'DMY', 'minYear' => 1940, 'maxYear' => date('Y'))); ?>            
         </section>
         
         <section>
