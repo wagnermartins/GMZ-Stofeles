@@ -2,6 +2,7 @@
     <h2>Editar vendedor</h2>
     
     <?php echo $this->Form->create('Vendedor', array('class' => 'wymupdate', 'inputDefaults' => array('label' => false))); ?>
+    <?php echo $this->Form->input('id', array('type' => 'hidden')); ?>
     <div class="column left">
         <section>
             <label>Nome</label>
@@ -48,8 +49,8 @@
         <section>
             <label>Endereço</label>
             <div>
-                <?php echo $this->Form->input('endereco', array('class' => 'large', 'placeholder' => 'Rua Lorem Ipsum', 'div' => false)); ?>
-                <?php echo $this->Form->input('numero', array('class' => 'small', 'placeholder' => '123', 'div' => false)); ?>
+                <?php echo $this->Form->input('endereco', array('value' => $rua, 'class' => 'large', 'placeholder' => 'Rua Lorem Ipsum', 'div' => false)); ?>
+                <?php echo $this->Form->input('numero', array('value' => $numero, 'class' => 'small', 'placeholder' => '123', 'div' => false)); ?>
             </div>
             <label>Cidade</label>
             <?php echo $this->Form->input('cidade', array('placeholder' => 'Cidade')); ?>

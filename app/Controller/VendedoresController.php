@@ -29,6 +29,8 @@ class VendedoresController extends AppController {
         } else {
             if($id) {
                 $this->request->data = $this->Vendedor->read(null, $id);
+                $endereco = explode(',', $this->request->data['Vendedor']['endereco']);
+                $this->set(array('rua' => $endereco[0], 'numero' => $endereco[1]));
             } else {
                 $this->redirect(array('controller' => 'vendedores', 'action' => 'index'));
             }

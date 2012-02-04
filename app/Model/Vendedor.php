@@ -6,6 +6,11 @@ class Vendedor extends AppModel {
     public $useTable = 'vendedores';
     //public $hasMany = array('Venda');
     //public $displayField = 'nome';
+    
+//    function splitAddress($results) {
+//        $endereco = explode(',', $results['Vendedor']['endereco']);
+//        return $endereco;
+//    }
    
     public $validate = array(
         'username' => array(
