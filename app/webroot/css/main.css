@@ -383,7 +383,7 @@ select {
   height: 28px;
   margin-left: 0;
   padding: 5px;
-  
+
   -moz-border-radius: 3px;
   -moz-box-shadow: 0 1px 2px #ccc;
   -webkit-border-radius: 3px;
@@ -395,6 +395,11 @@ select {
   margin-left: 0;
   padding-left: 9px;
   padding-top: 7px;
+  position: absolute;
+}
+
+.date .cmf-skinned-select {
+    display: inline;
 }
 
 /* Notifications */
