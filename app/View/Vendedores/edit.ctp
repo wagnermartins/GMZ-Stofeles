@@ -1,3 +1,4 @@
+<?php echo $this->Html->script(array('jquery.maskedinput-1.3.min')); ?>
 <section id="content">
     <h2>Editar vendedor</h2>
     
@@ -36,7 +37,7 @@
     <div class="column right">
         <section>
             <label>E-mail</label>
-            <?php echo $this->Form->input('email', array('placeholder' => 'Endereço de e-mail')); ?>
+            <?php echo $this->Form->input('email', array('class' => 'email', 'placeholder' => 'Endereço de e-mail')); ?>
         </section>        
         
         <section>
@@ -44,11 +45,11 @@
             <?php echo $this->Form->input('nascimento', array('monthNames' => 'false', 'separator' => ' ', 'style' => 'width:60px', 'dateFormat' => 'DMY', 'minYear' => 1940, 'maxYear' => date('Y'))); ?>            
         </section>
         
-        <section>
+         <section>
             <label>Telefone</label>
-            <?php echo $this->Form->input('telefone', array('placeholder' => '(00) 0000-0000')); ?>
+            <?php echo $this->Form->input('telefone', array('class' => 'telefone', 'placeholder' => '(00) 0000-0000')); ?>
             <label for="label">Celular</label>
-            <?php echo $this->Form->input('celular', array('placeholder' => '(00) 0000-0000')); ?>
+            <?php echo $this->Form->input('celular', array('class' => 'telefone', 'placeholder' => '(00) 0000-0000')); ?>
         </section>
       
         <section>
@@ -65,9 +66,9 @@
         
         <section>
             <label>CPF</label>
-            <?php echo $this->Form->input('cpf', array('placeholder' => '')); ?>
+            <?php echo $this->Form->input('cpf', array('class' => 'cpf', 'placeholder' => '999.999.999-99')); ?>
             <label for="label">RG</label>
-            <?php echo $this->Form->input('rg', array('placeholder' => '')); ?>
+            <?php echo $this->Form->input('rg', array('placeholder' => '99.999.999-9')); ?>
         </section>
     </div>
     <div class="clear"></div>

@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `vendedores` (
   `endereco` varchar(128) NOT NULL,
   `cidade` varchar(64) NOT NULL,
   `estado` varchar(2) NOT NULL,
-  `cpf` varchar(11) NOT NULL,
+  `cpf` varchar(14) NOT NULL,
   `rg` varchar(16) NOT NULL,
   `nascimento` date NOT NULL,
   `created` datetime NOT NULL,

@@ -4,9 +4,9 @@ to-do list projeto gmz
 √ 2 - arrumar selects nascimento na edit e add vendedores;
 3 - arrumar senha/verificação de senha na editar vendedores;
 4 - implementar função equalsToField na senha add vendedores;
-5 - máscaras para cpf, rg e telefone;
+√ - máscaras para cpf, rg e telefone;
 6 - validação nome de usuário em back-end (isUnique);
 √ 7 - adicionar campo de e-mail na tabela de vendedores;
 √ 8 - traduzir js das verificações de inputs e geração de tabela;
 9 - perguntar ao oráculo do cake, (lako) em relação ao mvc no caso splitAddress;
-10 - fazer validação do campo de email por js;
+√ - fazer validação do campo de email por js;
