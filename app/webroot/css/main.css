@@ -349,6 +349,7 @@ form input.large { width: 69% }
 form textarea {
   height: 100px;
   padding-top: 4px;
+  resize: none;
 }
 
 form textarea.wysiwym { background: #fff }

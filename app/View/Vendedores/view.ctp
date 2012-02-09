@@ -1,8 +1,8 @@
 <?php echo $this->Html->script(array('jquery.maskedinput-1.3.min')); ?>
 <section id="content">
-    <h2>Editar vendedor</h2>
+    <h2>Visualizando vendedor</h2>
     
-    <?php echo $this->Form->create('Vendedor', array('class' => 'wymupdate', 'inputDefaults' => array('label' => false))); ?>
+    <?php echo $this->Form->create('Vendedor', array('class' => 'wymupdate', 'inputDefaults' => array('label' => false, 'disabled' => 'disabled'))); ?>
     <?php echo $this->Form->input('id', array('type' => 'hidden')); ?>
     <div class="column left">
         <section>
@@ -15,21 +15,9 @@
         <section>
             <label>
                 Nome de usuário
-                <small>O nome de usuário precisa ter no mínimo 3 caracteres.</small>
             </label>
             <div>
                 <?php echo $this->Form->input('username', array('class' => 'required', 'minlength' => '3', 'placeholder' => 'Apenas letras')); ?>
-            </div>
-        </section>
-        
-        <section>
-            <label>
-                Senha
-                <small>A senha precisa ter no mínimo 6 caracteres</small>
-            </label>
-            <div>
-                <?php echo $this->Form->input('password', array('class' => 'passwd', 'value' => '', 'minlength' => '6', 'placeholder' => 'Senha')); ?>
-                <?php echo $this->Form->input('confirm_password', array('class' => 'confirm_password', 'value' => '', 'type' => 'password', 'minlength' => '6', 'placeholder' => 'Digite sua senha novamente')); ?>
             </div>
         </section>
     </div>
@@ -72,6 +60,4 @@
         </section>
     </div>
     <div class="clear"></div>
-    <?php echo $this->Form->submit('Editar', array('class' => 'button primary submit', 'div' => false)); ?>
-    <?php echo $this->Form->reset('Limpar', array('class' => 'button remove danger', 'value' => 'Limpar dados', 'div' => false)); ?>
-    <?php echo $this->Form->end(); ?>
+   <?php echo $this->Form->end(); ?>

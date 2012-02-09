@@ -15,7 +15,7 @@ class Vendedor extends AppModel {
             ),
             'regex' => array(
                 'rule' => '/^[a-zA-Z0-9_]+$/',
-                'message' => 'Usuário deve conter somente letras, números e underlines!'
+                'message' => 'Somente letras, números e underlines!'
             )
         )
     );

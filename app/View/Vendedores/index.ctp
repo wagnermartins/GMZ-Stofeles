@@ -30,9 +30,9 @@
                         <td><?php echo $vendedor['Vendedor']['celular']; ?></td>
                         <td>
                             <span class="button-group">
-                                <a href="#" class="button icon user">Ver Detalhes</a>
+                                <?php echo $this->Html->link('Ver detalhes', array('controller' => 'vendedores', 'action' => 'view', $vendedor['Vendedor']['id']), array('class' => 'button icon user')) ?>
 				<?php echo $this->Html->link('Editar', array('controller' => 'vendedores', 'action' => 'edit', $vendedor['Vendedor']['id']), array('class' => 'button icon edit')) ?>
-                                <a href="#" class="button icon remove danger">Remover</a>
+                                <?php echo $this->Html->link('Remover', array('controller' => 'vendedores', 'action' => 'delete', $vendedor['Vendedor']['id']), array('class' => 'button icon remove danger'), "Tem certeza que deseja deletar esse vendedor?") ?>
                             </span>
                         </td>
                     </tr>        

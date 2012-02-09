@@ -17,7 +17,7 @@
                 <small>O nome de usuário precisa ter no mínimo 3 caracteres.</small>
             </label>
             <div>
-                <?php echo $this->Form->input('username', array('class' => 'required', 'minlength' => '3', 'placeholder' => 'Apenas letras')); ?>
+                <?php echo $this->Form->input('username', array('class' => 'required', 'minlength' => '3', 'placeholder' => 'Somente letras, números e underlines')); ?>
             </div>
         </section>
         

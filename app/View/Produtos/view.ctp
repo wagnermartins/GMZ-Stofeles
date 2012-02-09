@@ -1,8 +1,7 @@
-<?php echo $this->Html->script(array('jquery.maskmoney')); ?>
 <section id="content">
     <h2>Editar produto</h2>
     
-    <?php echo $this->Form->create('Produto', array('class' => 'wymupdate', 'inputDefaults' => array('label' => false))); ?>
+    <?php echo $this->Form->create('Produto', array('class' => 'wymupdate', 'inputDefaults' => array('label' => false, 'disabled' => 'disabled'))); ?>
     <?php echo $this->Form->input('id', array('type' => 'hidden')); ?>
     <div class="column left">
         <section>
@@ -23,10 +22,9 @@
                 <small>Escreva informações sobre o produto.</small>
             </label>
             <div>
-                <?php echo $this->Form->textarea('descricao'); ?>
+                <?php echo $this->Form->textarea('descricao', array('disabled' => 'disabled')); ?>
             </div>
         </section>
     </div>
     <div class="clear"></div>
-    <?php echo $this->Form->submit('Editar', array('class' => 'button primary submit', 'div' => false)); ?>
     <?php echo $this->Form->end(); ?>
