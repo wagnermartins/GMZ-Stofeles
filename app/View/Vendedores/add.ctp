@@ -2,7 +2,7 @@
 <section id="content">
     <h2>Adicionar vendedor</h2>
     
-    <?php echo $this->Form->create('Vendedor', array('class' => 'wymupdate', 'inputDefaults' => array('label' => false))); ?>
+    <?php echo $this->Form->create('Vendedor', array('class' => 'wymupdate', 'inputDefaults' => array('label' => false, 'error' => array('attributes' => array('wrap' => 'label', 'class' => 'error'))))); ?>
     <div class="column left">
         <section>
             <label>Nome</label>

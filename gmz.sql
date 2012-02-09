@@ -19,6 +19,10 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Banco de Dados: `gmz`
 --
 
+DROP DATABASE `gmz`;
+CREATE DATABASE `gmz`;
+USE `gmz`;
+
 -- --------------------------------------------------------
 
 --
