@@ -28,7 +28,7 @@
             </label>
             <div>
                 <?php echo $this->Form->input('password', array('class' => 'required', 'minlength' => '6', 'placeholder' => 'Senha')); ?>
-                <?php echo $this->Form->input('confirm_password', array('class' => 'required', 'type' => 'password', 'minlength' => '6', 'placeholder' => 'Digite sua senha novamente')); ?>
+                <?php echo $this->Form->input('confirm_password', array('class' => 'required confirm_password', 'type' => 'password', 'minlength' => '6', 'placeholder' => 'Digite sua senha novamente')); ?>
             </div>
         </section>
     </div>
