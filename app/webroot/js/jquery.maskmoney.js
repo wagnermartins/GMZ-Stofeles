@@ -354,6 +354,6 @@
 })(jQuery);
 
 $(document).ready(function() {
-   $(".valor").maskMoney({symbol:"R$",decimal:",",thousands:"."});
+   $(".valor").maskMoney({symbol:"R$",decimal:",",thousands:".", symbolStay: true});
 });
 
