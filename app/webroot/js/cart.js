@@ -7,11 +7,12 @@ $(document).ready(function() {
 	rmv = $(".removeFromCart");
 	cartList = $(".cartList");
 
-	$(add).on('click', function(event) {
+	$(add).live('click', function(event) {
 
 		$(".realcart").fadeIn("slow");
 
 		event.preventDefault();
+
 		id = $(this).closest("td").attr("class").split("-");
 		id = id[1];
 		qtd = $(".qtd-"+id+" input").val();
@@ -20,7 +21,12 @@ $(document).ready(function() {
 		$(this).next().addClass("pid-"+id).show().animate({width: "10px"}); // show Remove button
 		$(".qtd-"+id).css("display","inline");
 		$(".qtd-"+id+" input").show().focus().select();
-		getData(id);
+		
+		arr = $(this).attr("alt").split("|");
+		nome = arr[2];
+		valor = arr[1];
+		descricao = arr[3];
+
 		addItem(id,nome,valor,qtd);
 		qtdField(id);
 	});
@@ -31,7 +37,7 @@ $(document).ready(function() {
 		}
 	});
 
-	$(rmv).on('click', function(event) {
+	$(rmv).live('click', function(event) {
 		event.preventDefault();
 		id = $(this).attr("alt");
 		$(".realcart").find("tr#"+id).hide();
@@ -57,6 +63,7 @@ $(document).ready(function() {
   	}
 
 	function getData(id) {
+		alert($(".pid-"+id).find(add).attr("alt"));
 		arr = $(".pid-"+id).find(add).attr("alt").split("|");
 		nome = arr[2];
 		valor = arr[1];
