@@ -104,6 +104,7 @@
 	width: 19px;
 	margin-left: 3px;
 	float: left;
+	font-size:0;
 }
 
 .paginate_disabled_previous {

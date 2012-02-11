@@ -1,4 +1,4 @@
-<?php echo $this->Html->script(array('cart')); ?>
+<?php echo $this->Html->script(array('jquery.formatCurrency-1.4.0.min', 'jquery.formatCurrency.pt-BR', 'jquery.formrestrict', 'jquery.alphanumeric', 'jquery.hotkeys', 'cart')); ?>
 <nav id="secondary">
     <ul>
         <li class="current"><a href="#">Main tab</a></li>
@@ -27,10 +27,10 @@
                 <?php foreach($produtos as $produto) : ?>
                     <tr id="<?php echo $produto['Produto']['id'];?>" style="display:none";>
 	                        <td><?php echo $produto['Produto']['nome']; ?></td>
-	                        <td><?php echo $this->Number->format($produto['Produto']['valor'], array('before' => 'R$ ', 'decimals' => ',', 'thousands' => '.')) ?></td>
+	                        <td class="valor"><?php echo $this->Number->format($produto['Produto']['valor'], array('before' => 'R$ ', 'decimals' => ',', 'thousands' => '.')) ?></td>
 	                        <td class="pid-<?php echo $produto['Produto']['id']; ?>" style="width:70px">
 	                            <span class="button-group">
-	                                <form style="position: absolute;"><input class="qtdField-<?php echo $produto['Produto']['id'];?>" style="width:30px; height:23px;margin: 0px 30px;" type="text" placeholder="Qtd." maxlength="4">
+	                                <form style="position: absolute;"><input class="qtdNum qtdField-<?php echo $produto['Produto']['id'];?>" style="width:30px; height:23px;margin: 0px 30px;" type="text" placeholder="Qtd." maxlength="4">
 	                                </form>
 	                             <?php echo $this->Html->link('', array('controller' => '', 'action' => '', $produto['Produto']['id']), array('style' => 'width:10px; height:13px;', 'alt' => $produto['Produto']['id'], 'class' => 'button icon danger remove removeFromCart')) ?>
 	                            </span>
@@ -61,7 +61,7 @@
 	                            <span class="button-group">
 	                                <?php echo $this->Html->link('Adicionar ao carrinho', array('controller' => '', 'action' => '', $produto['Produto']['id']), array('alt' => $produto['Produto']['id'].'|'.$this->Number->format($produto['Produto']['valor'], array('before' => 'R$ ', 'decimals' => ',', 'thousands' => '.')).'|'.$produto['Produto']['nome'].'|'.$produto['Produto']['descricao'], 'class' => 'button icon add addToCart')) ?>
 	                                <?php echo $this->Html->link('', array('controller' => '', 'action' => '', $produto['Produto']['id']), array('style' => 'width:0; height:13px; display:none;', 'alt' => $produto['Produto']['id'], 'class' => 'button icon danger remove removeFromCart')) ?>
-	                                <form class="qtd qtd-<?php echo $produto['Produto']['id'];?>" style="display:none; position: absolute;"><input style="width:30px; height:23px;margin: 0px 10px;" type="text" placeholder="Qtd." maxlength="4"></form>
+	                                <form class="qtd qtd-<?php echo $produto['Produto']['id'];?>" style="display:none; position: absolute;"><input style="width:30px; height:23px;margin: 0px 10px;" class="qtdNum" type="text" placeholder="Qtd." maxlength="4"></form>
 	                            </span>
 	                        </td>
                     </tr>        
