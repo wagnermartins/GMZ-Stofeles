@@ -23,8 +23,11 @@ class Vendedor extends AppModel {
     public function beforeSave() {
         if(isset($this->data['Vendedor']['endereco']) && isset($this->data['Vendedor']['numero'])) {
             $this->data['Vendedor']['endereco'] = $this->data['Vendedor']['endereco'] . ',' . $this->data['Vendedor']['numero'];
-            return true;
         }
+        if (isset($this->data['Vendedor']['password'])) {
+            $this->data['Vendedor']['password'] = AuthComponent::password($this->data['Vendedor']['password']);
+        }
+        return true;
     }
     
 }

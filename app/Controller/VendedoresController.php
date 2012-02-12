@@ -5,6 +5,11 @@ class VendedoresController extends AppController {
     public $name = 'Vendedores';
     public $uses = array('Vendedor');
     
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('add');
+    }
+    
     public function index() {
         $data = $this->Vendedor->find('all');
         $this->set('vendedores', $data);
@@ -49,6 +54,20 @@ class VendedoresController extends AppController {
         } else {
             $this->redirect(array('controller' => 'vendedores', 'action' => 'index'));
         }
+    }
+    
+    public function login() {
+        if ($this->request->is('post')) {
+            if ($this->Auth->login()) {
+                $this->redirect($this->Auth->redirect());
+            } else {
+                echo 'Your username/password combination was incorrect';
+            }
+        }
+    }
+
+    public function logout() {
+        $this->redirect($this->Auth->logout());
     }
       
     private function preencheEndereco() {
