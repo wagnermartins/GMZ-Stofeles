@@ -76,7 +76,6 @@ $(document).ready(function() {
 
 	function addItem(id,nome,valor,qtd) {
 		$(".realcart").find("tr#"+ id ).show();
-		
 			
 	}
 

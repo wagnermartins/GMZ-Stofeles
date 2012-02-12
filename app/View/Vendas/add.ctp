@@ -15,7 +15,7 @@
     	 <p>
     	 <small>Adicione itens ao carrinho a partir da tabela a direita.</small>
     	 </p>
-  		<table class="realcart" style="display:none; width:332px;">
+  		<table class="realcart" style="display:none; width:330px; font-size:0.9em;">
             <thead>
                 <tr>
                     <th>Nome</th>
