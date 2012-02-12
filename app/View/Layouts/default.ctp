@@ -109,12 +109,13 @@
             
               <input type="text" id="search" placeholder="Realtime search..." />
             </nav>
-            
+
             <?php echo $content_for_layout; ?>
 
           </div>
         
           <footer id="copyright">Theme design &amp; development by Bram Jetten in 2011</footer>
+          <?php echo $this->element('sql_dump'); ?>
         </div>
       </div>
     </div>

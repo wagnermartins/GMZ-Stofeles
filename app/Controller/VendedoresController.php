@@ -5,11 +5,20 @@ class VendedoresController extends AppController {
     public $name = 'Vendedores';
     public $uses = array('Vendedor');
     
-    public function beforeFilter() {
-        parent::beforeFilter();
-        $this->Auth->allow('add');
-    }
-    
+	public function login() {
+	    if ($this->request->is('post')) {
+	        if ($this->Auth->login()) {
+	            $this->redirect($this->Auth->redirect());   
+	        } else {
+	            $this->Session->setFlash('Your username/password combination was incorrect');
+	        }
+	    }
+	}
+	
+	public function logout() {
+	    $this->redirect($this->Auth->logout());
+	}
+      
     public function index() {
         $data = $this->Vendedor->find('all');
         $this->set('vendedores', $data);
@@ -55,21 +64,7 @@ class VendedoresController extends AppController {
             $this->redirect(array('controller' => 'vendedores', 'action' => 'index'));
         }
     }
-    
-    public function login() {
-        if ($this->request->is('post')) {
-            if ($this->Auth->login()) {
-                $this->redirect($this->Auth->redirect());
-            } else {
-                echo 'Your username/password combination was incorrect';
-            }
-        }
-    }
-
-    public function logout() {
-        $this->redirect($this->Auth->logout());
-    }
-      
+         
     private function preencheEndereco() {
         if(!empty($this->request->data['Vendedor']['endereco'])) {
             $endereco = explode(',', $this->request->data['Vendedor']['endereco']);
