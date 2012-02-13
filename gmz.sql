@@ -52,7 +52,8 @@ CREATE TABLE IF NOT EXISTS `produtos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
   `descricao` text NOT NULL,
-  `valor` float NOT NULL,
+  `valor` decimal NOT NULL,
+  `quantidade` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `updated` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -77,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `vendas` (
   `vendedor_id` int(11) NOT NULL,
   `nome_cliente` varchar(50) NOT NULL,
   `forma_pagamento` varchar(20) NOT NULL,
-  `valor_total` float NOT NULL,
+  `valor_total` decimal NOT NULL,
   `created` datetime NOT NULL,
   `updated` datetime NOT NULL,
   PRIMARY KEY (`id`)

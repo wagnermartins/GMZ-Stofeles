@@ -1,4 +1,10 @@
-<?php echo $this->Html->script(array('jquery.maskmoney')); ?>
+<?php echo $this->Html->script(array('jquery.alphanumeric', 'jquery.maskmoney')); ?>
+<script>
+$(document).ready(function() {
+   $(".quantidade").numeric();
+   
+});
+</script>
 <section id="content">
     <h2>Cadastrar produto</h2>
     
@@ -12,6 +18,11 @@
         <section>
             <label>Valor</label>
             <div><?php echo $this->Form->input('valor', array('type' => 'text', 'class' => 'required valor', 'placeholder' => 'Valor')); ?></div>
+        </section>
+
+         <section>
+            <label>Quantidade</label>
+            <div><?php echo $this->Form->input('quantidade', array('type' => 'text', 'class' => 'required quantidade', 'placeholder' => 'Disponibilidade em estoque')); ?></div>
         </section>
     </div>
     

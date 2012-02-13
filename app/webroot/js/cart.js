@@ -1,6 +1,6 @@
 /*
 GMZ Cart @gbr
-TODO: Shift enter conclui a venda
+TODO: Shift enter conclui a venda!
 */
 $(document).ready(function() {
 
@@ -134,10 +134,6 @@ $(document).ready(function() {
 		nome = arr[2];
 		valor = arr[1];
 		descricao = arr[3];
-	}
-
-	function simulateKeyPress(character) {
-  		jQuery.event.trigger({ type : 'keypress', which : character.charCodeAt(0) });
 	}
 
 });

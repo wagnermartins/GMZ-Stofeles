@@ -15,6 +15,7 @@
                     <th title="Código">#</th>
                     <th>Nome</th>
                     <th>Valor</th>
+                    <th>Quantidade</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -24,6 +25,7 @@
                         <td><?php echo $produto['Produto']['id']; ?></td>
                         <td><?php echo $produto['Produto']['nome']; ?></td>
                         <td><?php echo $this->Number->format($produto['Produto']['valor'], array('before' => 'R$ ', 'decimals' => ',', 'thousands' => '.')) ?></td>
+                        <td><?php echo $produto['Produto']['quantidade']; ?></td>
                         <td>
                             <span class="button-group">
                                 <?php echo $this->Html->link('Ver detalhes', array('controller' => 'produtos', 'action' => 'view', $produto['Produto']['id']), array('class' => 'button icon user')) ?>

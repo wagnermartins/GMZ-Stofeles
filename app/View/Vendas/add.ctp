@@ -15,7 +15,7 @@
     	 <p>
     	 <small>Adicione itens ao carrinho a partir da tabela a direita.</small>
     	 </p>
-  		<table class="realcart" style="display:none;">
+  		<table class="realcart" style="display:none; width:332px;">
             <thead>
                 <tr>
                     <th>Nome</th>
@@ -54,10 +54,10 @@
             <tbody>
                 <?php foreach($produtos as $produto) : ?>
                     <tr>
-	                        <td><?php echo $produto['Produto']['id']; ?></td>
+	                        <td style="width:10px"><?php echo $produto['Produto']['id']; ?></td>
 	                        <td><?php echo $produto['Produto']['nome']; ?></td>
 	                        <td><?php echo $this->Number->format($produto['Produto']['valor'], array('before' => 'R$ ', 'decimals' => ',', 'thousands' => '.')) ?></td>
-	                        <td class="pid-<?php echo $produto['Produto']['id']; ?>">
+	                        <td style="width:200px" class="pid-<?php echo $produto['Produto']['id']; ?>">
 	                            <span class="button-group">
 	                                <?php echo $this->Html->link('Adicionar ao carrinho', array('controller' => '', 'action' => '', $produto['Produto']['id']), array('alt' => $produto['Produto']['id'].'|'.$this->Number->format($produto['Produto']['valor'], array('before' => 'R$ ', 'decimals' => ',', 'thousands' => '.')).'|'.$produto['Produto']['nome'].'|'.$produto['Produto']['descricao'], 'class' => 'button icon add addToCart')) ?>
 	                                <?php echo $this->Html->link('', array('controller' => '', 'action' => '', $produto['Produto']['id']), array('style' => 'width:0; height:13px; display:none;', 'alt' => $produto['Produto']['id'], 'class' => 'button icon danger remove removeFromCart')) ?>

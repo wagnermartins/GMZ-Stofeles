@@ -13,6 +13,11 @@
             <label>Valor</label>
             <div><?php echo $this->Form->input('valor', array('type' => 'text', 'class' => 'required valor', 'placeholder' => 'Valor')); ?></div>
         </section>
+
+        <section>
+            <label>Quantidade</label>
+            <div><?php echo $this->Form->input('quantidade', array('type' => 'text', 'class' => 'required', 'placeholder' => 'Valor')); ?></div>
+        </section>
     </div>
     
     <div class="column right">

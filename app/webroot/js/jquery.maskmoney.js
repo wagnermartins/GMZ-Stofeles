@@ -354,7 +354,8 @@
 })(jQuery);
 
 $(document).ready(function() {
-   $(".valor").maskMoney({symbol:'R$ ', showSymbol:true, thousands:'.', decimal:',', symbolStay: true}).focus();
+   $(".valor").maskMoney({symbol:'R$ ', showSymbol:true, thousands:'.', decimal:',', symbolStay: true});
+   $(".quantidade").numeric();
    
 });
 
