@@ -23,7 +23,6 @@
             'jquery.wymeditor.js',
             'jquery.validate.js',
             'jquery.inputtags.js',
-            'notifications.js',
             'application.js',
         )); 
     ?>
@@ -119,5 +118,6 @@
         </div>
       </div>
     </div>
+     <?php echo $this->Html->script(array('notifications.js')); ?>
   </body>
 </html>

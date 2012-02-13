@@ -1,5 +1,4 @@
 $("body").prepend('<ul id="notifications"></ul>');
-
 /**
  * Global notification system
  *
@@ -19,6 +18,14 @@ function Notification(value, type, tag) {
   }
   $("#notifications").append(this.element);
   this.show();
+
+  var el=$('#notifications');
+  var elpos=el.offset().top;
+  $(window).scroll(function () {
+    var y=$(this).scrollTop();
+    if(y<elpos){el.stop().animate({'top':0},200);}
+    else{el.stop().animate({'top':y-elpos},100);}
+  });
 }
 
 /**
@@ -27,6 +34,9 @@ function Notification(value, type, tag) {
 Notification.fn.show = function() {
   $(this.element).slideDown(200);
   $(this.element).click(this.hide);
+  setTimeout(function() {
+    // vaza notifs
+  }, 100);
 }
 
 /**

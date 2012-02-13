@@ -6,6 +6,8 @@ $(document).ready(function() {
 
 	add = ".addToCart";
 	rmv = ".removeFromCart";
+	var cartList = [];
+
 
 	/* 
 		SEARCH BAR UX 
@@ -22,6 +24,10 @@ $(document).ready(function() {
     	var reg = new RegExp("^[0-9]$"); // only nums!
     	cod = $(this).val();
 
+    	$(this).bind('keyup', 'shift+return', function(event){
+    			//alert("venda concluida");
+  		});
+
     	if( reg.test(cod) ) {	// Se for o cod de um produto ele já adiciona no cart
     		$(this).bind('keyup', 'return', function(event){
     			$("table.cart .pid-"+ cod ).find(add).click();
@@ -29,6 +35,10 @@ $(document).ready(function() {
   			});
     	}
     });
+
+    $(".qtdNum").click(function() {
+    	$(this).select();
+    })
 
 	$(window).keydown(function(event){ // block enter form submit
 	    if(event.keyCode == 13) { // & quickAdd - Para bloquear somente qndo power quickAdd for utilizado
@@ -52,16 +62,18 @@ $(document).ready(function() {
 		id = id[1];
 		qtd = $(".qtd-"+ id +" input").val();
 		
+		getData(id);
+		if(!$(this).hasClass("approve")) {
+			addItem(id,nome,valor,qtd);	
+		}
+		qtdField(id);
+
+
 		// Animações e UX improvements
 		$(this).removeClass(add).addClass("approve active").css({"opacity":".6","cursor":"default"}).text("Já adicionado").animate({width: "87px"});
 		$(this).next().addClass("pid-"+id).show().animate({width: "10px"}); // show Remove button
 		$(".qtd-"+ id ).css("display","inline");
 		$(".qtd-"+ id +" input").show().focus().select();
-		
-		getData(id);
-
-		addItem(id,nome,valor,qtd);
-		qtdField(id);
 	});
 
 	// Remove btn stuff
@@ -72,13 +84,39 @@ $(document).ready(function() {
 		$("table.cart .pid-"+id).find(rmv).hide();
 		$(".pid-"+ id ).find(add).removeClass("approve active").addClass(add).css({"opacity":"1","cursor":"auto"}).text("Adicionar ao carrinho").css({width:"121px"});
 		$(".qtd-"+ id +" input").val("").fadeOut("fast");
+		rmvItem(id);
 	});
+
+	function rmvItem(id) {
+		$.each( cartList, function(i, v) {
+			if(cartList[i]['id'].trim() == id) {
+					cartList.splice(i, 1);
+			}
+		});
+		 
+ 		if(cartList == '') {
+		 	$(".realcart").hide();
+		}
+	}
+
+	// Just for debugging
+	$('h3').click(function() {
+		//alert(cartList);
+		console.log(cartList);
+	});
+	
 
 	function addItem(id,nome,valor,qtd) {
 		$(".realcart").find("tr#"+ id ).show();
-			
+		new Notification('<strong>'+nome+':</strong> adicionada ao carrinho', 'success');
+		
+		cartList.push({
+        'id':id,
+        'valor':valor,
+        'quantidade':qtd,
+        'nome':nome
+  		});
 	}
-
 	function qtdField(id) {
 
 		$(".qtd-"+ id +" input").keyup(function(e){
@@ -114,19 +152,26 @@ $(document).ready(function() {
   			
   			// formata o novo_valor no padrão brasileiro
   			$(".realcart").find("tr#"+ id +" .valor").html(valor_novo).formatCurrency({region: 'pt-BR' });
+
+			$.each( cartList, function(i, v) {
+			    if( v.id == id ) {
+			       cartList[i]['quantidade'] = val;
+			    }
+			 });
+
+			// console.log(cartList);
   		}
-
-
-  		$(".qtd input").focusout(function() {
-			if($(this).val() == "") {
-				$(this).val("1").keyup();	
-			}
-		});
 
 		$(".qtd-"+ id +" input").numeric();
 		$(".qtdField-"+ id ).numeric();
 
   	}
+
+	$(".qtd input").focusout(function() {
+		if($(this).val() == "") {
+			$(this).val("1").keyup();	
+		}
+	});
 
 	function getData(id) {
 		arr = $(".pid-"+ id ).find(add).attr("alt").split("|");

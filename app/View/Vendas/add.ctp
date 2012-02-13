@@ -39,6 +39,7 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
+        <a href="" class="button icon tag">Efetuar venda</a>
     </div>
 
     <div class="column right twothird">
