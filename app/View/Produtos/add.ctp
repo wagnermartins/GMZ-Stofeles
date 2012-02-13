@@ -1,8 +1,7 @@
-<?php echo $this->Html->script(array('jquery.alphanumeric', 'jquery.maskmoney')); ?>
+<?php echo $this->Html->script(array('jquery.maskmoney', 'jquery.formrestrict', 'jquery.alphanumeric')); ?>
 <script>
 $(document).ready(function() {
    $(".quantidade").numeric();
-   
 });
 </script>
 <section id="content">
@@ -14,7 +13,7 @@ $(document).ready(function() {
             <label>Nome</label>
             <?php echo $this->Form->input('nome', array('class' => 'required', 'placeholder' => 'Nome')); ?>
         </section>
-               
+
         <section>
             <label>Valor</label>
             <div><?php echo $this->Form->input('valor', array('type' => 'text', 'class' => 'required valor', 'placeholder' => 'Valor')); ?></div>
