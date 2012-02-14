@@ -1,18 +1,12 @@
-<nav id="secondary">
-    <ul>
-        <li class="current"><a href="#">Main tab</a></li>
-        <li><a href="#">Optional second tab</a></li>
-        <li><a href="#">Optional third tab</a></li>
-    </ul>
-</nav>
-
 <section id="content">
-    <h2>Vendas já registradas</h2>
+    <h2>Vendas já registradas </h2>
+    
+    <p><?php echo $this->Html->link('Nova venda', array('controller' => 'vendas', 'action' => 'add'), array('class' => 'button icon add')) ?></p>
     <div class="collum left">
         <table class="datatable">
             <thead>
                 <tr>
-                    <th>Código</th>
+                    <th title="Código">#</th>
                     <th>Data / Hora</th>
                     <th>Produtos</th>
                     <th>Vendedor</th>

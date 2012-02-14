@@ -1,12 +1,4 @@
 <?php echo $this->Html->script(array('jquery.formatCurrency-1.4.0.min', 'jquery.formatCurrency.pt-BR', 'jquery.formrestrict', 'jquery.alphanumeric', 'jquery.hotkeys', 'cart')); ?>
-<nav id="secondary">
-    <ul>
-        <li class="current"><a href="#">Main tab</a></li>
-        <li><a href="#">Optional second tab</a></li>
-        <li><a href="#">Optional third tab</a></li>
-    </ul>
-</nav>
-
 <section id="content">
     <h2>Realizar venda</h2>
 
