@@ -39,7 +39,24 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
-        <a href="" class="button icon tag">Efetuar venda</a>
+        <div class="cartResume">
+        <span class="subtotal"><strong>Subtotal:</strong><span style="padding: 0 5px">R$ 0,00</span></span></br>
+        <span class="total"><strong>Total:</strong><span style="padding: 0 5px">R$ 0,00</span></span>
+        <form style="position: relative; display: inline;"><input class="desconto" style="width:62px; height:23px;margin: 5px;" type="text" placeholder="Desconto %" maxlength="3">%</form><br/>
+        <section>
+            <label>
+            </label>
+          <div class="forma_pagamento">
+            <select style="width:150px;">
+              <option>Dinheiro</option>
+              <option>Cartão de Débito</option>
+              <option>Cartão de Crédito</option>
+              <option>Cheque</option>
+            </select>
+             <a href="" style="" class="finalizarVenda button icon tag">Efetuar venda</a>
+           </div>
+        </section>
+        </div>
     </div>
 
     <div class="column right twothird">
@@ -54,6 +71,7 @@
             </thead>
             <tbody>
                 <?php foreach($produtos as $produto) : ?>
+                <?php if($produto['Produto']['quantidade'] > 0) : ?>
                     <tr>
 	                        <td style="width:10px"><?php echo $produto['Produto']['id']; ?></td>
 	                        <td><?php echo $produto['Produto']['nome']; ?></td>
@@ -65,7 +83,8 @@
 	                                <form class="qtd qtd-<?php echo $produto['Produto']['id'];?>" style="display:none; position: absolute;"><input style="width:30px; height:23px;margin: 0px 10px;" class="qtdNum" type="text" placeholder="Qtd." maxlength="4"></form>
 	                            </span>
 	                        </td>
-                    </tr>        
+                    </tr>
+                    <?php endif; ?>       
                 <?php endforeach; ?>
             </tbody>
         </table>

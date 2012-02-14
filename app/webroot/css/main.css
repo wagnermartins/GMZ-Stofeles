@@ -399,7 +399,7 @@ select {
   position: absolute;
 }
 
-.date .cmf-skinned-select {
+.date .cmf-skinned-select, .forma_pagamento .cmf-skinned-select {
     display: inline;
 }
 

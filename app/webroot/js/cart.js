@@ -6,27 +6,49 @@ $(document).ready(function() {
 
 	add = ".addToCart";
 	rmv = ".removeFromCart";
-	var cartList = [];
-
+	cartList = new Array();
+	forma_pagamento = $("select .forma_pagamento").val();
 
 	/* 
 		SEARCH BAR UX 
 		Melhoras na search bar para melhor UX - 'Power quickAdd experience'
 	*/
 
+	$(".desconto").numeric();
+	$(".desconto").focusout(function() {
+		if($(this).val() > 100) {
+			$(this).val("");
+			$(".cartResume .subtotal span").html(subtotal).formatCurrency({region: 'pt-BR' });
+		}
+	});
+	$(".desconto").keyup(function() {
+		total = subtotal-((subtotal/100)*$(this).val());
+		$(".cartResume .total span").html(total).formatCurrency({region: 'pt-BR' });
+		desconto = $(this).val();
+	});
+
+	$(".dataTables_filter label input").bind('keyup', 'shift+d', function(event){
+				$(this).val("");
+    			$(".desconto").focus().select();
+	});
+
 	$(".dataTables_filter label input").focus(); // Dá searchbar focus on load, better UX
 
-	$(document).bind('keyup', 'f', function(event){
+	$(document).bind('keyup', 'shift+f', function(event){
     	$(".dataTables_filter label input").focus().select();
+    });
+
+    $(document).bind('keyup', 'shift+d', function(event){
+    	$(".desconto").focus().select();
     });
 
     $(".dataTables_filter label input").keyup(function() {
     	var reg = new RegExp("^[0-9]$"); // only nums!
     	cod = $(this).val();
 
-    	$(this).bind('keyup', 'shift+return', function(event){
-    			//alert("venda concluida");
-  		});
+    	/*$(this).bind('keyup', 'shift+return', function(event){
+    			$(".finalizarVenda").click();
+  		});*/ // Finalizar venda direto do formulário
 
     	if( reg.test(cod) ) {	// Se for o cod de um produto ele já adiciona no cart
     		$(this).bind('keyup', 'return', function(event){
@@ -48,7 +70,7 @@ $(document).ready(function() {
   	});
 
   	$(document).bind('keyup', 'shift+return', function(event){
-    			alert("Venda concluida");
+    			$(".finalizarVenda").click();
   	});
 
   	// Add to cart stuff
@@ -89,12 +111,14 @@ $(document).ready(function() {
 
 	function rmvItem(id) {
 		$.each( cartList, function(i, v) {
-			if(cartList[i]['id'].trim() == id) {
+			if(cartList[i][0].trim() == id) {
 					cartList.splice(i, 1);
+					atualizaValor(id,"0,0");
 			}
 		});
-		 
+
  		if(cartList == '') {
+ 			$(".cartResume .subtotal span").html(" R$ 0,00");
 		 	$(".realcart").hide();
 		}
 	}
@@ -109,13 +133,8 @@ $(document).ready(function() {
 	function addItem(id,nome,valor,qtd) {
 		$(".realcart").find("tr#"+ id ).show();
 		new Notification('<strong>'+nome+':</strong> adicionada ao carrinho', 'success');
-		
-		cartList.push({
-        'id':id,
-        'valor':valor,
-        'quantidade':qtd,
-        'nome':nome
-  		});
+
+  		cartList.push(Array(id,valor,qtd,nome));
 	}
 	function qtdField(id) {
 
@@ -142,30 +161,41 @@ $(document).ready(function() {
   			$(".qtd-"+ id +" input").val(val);
   			atualizaValor(id,val);
   		});
-  		
-  		function atualizaValor(id,val) {
-  			valor_u = valor;
-  			valor_u = valor_u.replace(",",".").split(" ");
-  			valor_u = valor_u[1];
-  			val_qtdtotal = val.replace(",",".");
-  			valor_novo = (val_qtdtotal*valor_u);
-  			
-  			// formata o novo_valor no padrão brasileiro
-  			$(".realcart").find("tr#"+ id +" .valor").html(valor_novo).formatCurrency({region: 'pt-BR' });
-
-			$.each( cartList, function(i, v) {
-			    if( v.id == id ) {
-			       cartList[i]['quantidade'] = val;
-			    }
-			 });
-
-			// console.log(cartList);
-  		}
 
 		$(".qtd-"+ id +" input").numeric();
 		$(".qtdField-"+ id ).numeric();
 
   	}
+
+	function atualizaValor(id,val) {
+
+		subtotal = 0;
+
+		$.each( cartList, function(i, v) {
+		    if( v[0] == id ) {
+		    	valor = cartList[i][1];
+		      	cartList[i][2] = val;
+		    }
+
+	    	subtotal = subtotal+(Number(cartList[i][1].replace("R$ ","").replace(",",".")*cartList[i][2]));
+	    	$(".cartResume .subtotal span").html(subtotal).formatCurrency({region: 'pt-BR' });
+
+	    	total = subtotal-((subtotal/100)*$(".desconto").val());
+	    	$(".cartResume .total span").html(total).formatCurrency({region: 'pt-BR' });
+
+		});
+
+
+		valor_u = valor;
+		valor_u = valor_u.replace(",",".").split(" ");
+		valor_u = valor_u[1];
+		val_qtdtotal = val.replace(",",".");
+		valor_novo = (val_qtdtotal*valor_u);
+		
+		// formata o novo_valor no padrão brasileiro
+		$(".realcart").find("tr#"+ id +" .valor").html(valor_novo).formatCurrency({region: 'pt-BR' });
+
+	}
 
 	$(".qtd input").focusout(function() {
 		if($(this).val() == "") {
@@ -179,5 +209,14 @@ $(document).ready(function() {
 		valor = arr[1];
 		descricao = arr[3];
 	}
+
+	$(".finalizarVenda").click(function(event) {
+		event.preventDefault();
+		href = $(this).attr("href");
+		$.post(href, { 'cart[]' : cartList, 'subtotal' : subtotal, 'total' : total, 'forma_pagamento' : forma_pagamento, 'desconto' : desconto }, function(data) {
+				alert(data);
+		});
+		
+	});
 
 });
