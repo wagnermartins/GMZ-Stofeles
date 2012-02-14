@@ -5,19 +5,23 @@ class VendedoresController extends AppController {
     public $name = 'Vendedores';
     public $uses = array('Vendedor');
     
-	public function login() {
-	    if ($this->request->is('post')) {
-	        if ($this->Auth->login()) {
-	            $this->redirect($this->Auth->redirect());   
-	        } else {
-	            $this->Session->setFlash('Your username/password combination was incorrect');
-	        }
-	    }
-	}
-	
-	public function logout() {
-	    $this->redirect($this->Auth->logout());
-	}
+    public function login() {
+        if($this->Auth->loggedIn()) {
+            $this->redirect(array('controller' => 'vendas', 'action' => 'add'));    
+        } else {            
+            if ($this->request->data) {
+                if ($this->Auth->login()) {
+                    $this->redirect($this->Auth->redirect());   
+                } else {
+                    $this->Session->setFlash('Your username/password combination was incorrect');
+                }
+            }
+        }
+    }
+
+    public function logout() {
+        $this->redirect($this->Auth->logout());
+    }
       
     public function index() {
         $data = $this->Vendedor->find('all');

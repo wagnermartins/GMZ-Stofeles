@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `vendedores` (
   `nome` varchar(32) NOT NULL,
   `sobrenome` varchar(64) NOT NULL,
   `username` varchar(32) NOT NULL,
-  `password` char(32) NOT NULL,
+  `password` varchar(40) NOT NULL,
   `telefone` varchar(16) NOT NULL,
   `celular` varchar(16) NOT NULL,
   `endereco` varchar(128) NOT NULL,

@@ -5,21 +5,30 @@ class AppController extends Controller {
         'Session',
         'Auth' => array(
             'authenticate' => array('Form' => array('userModel' => 'Vendedor')),
-            'loginRedirect' => array('controller' => 'vendedores', 'action' => 'index'),
-            'logoutRedirect' => array('controller' => 'vendedores', 'action' => 'display', 'home')
+            'loginRedirect' => array('controller' => 'pages', 'action' => ''),
+            'logoutRedirect' => array('controller' => 'vendedores', 'action' => 'login')
         )
     );
+    
+    public function isAuthorized($user) {
+        if ($user['role'] == 'admin') {
+            return true;
+        }
+        if (in_array($this->action, array('edit', 'delete', 'add'))) {
+            if ($user['role'] != 'admin') {
+                return false;
+            }
+        }
+        return true;
+    }
        
     public function beforeFilter() {
-        $this->Auth->allow('index', 'view', 'add');
+        $this->Auth->authorize = 'controller';
         $this->set('logged_in', $this->Auth->loggedIn());
         $this->set('current_user', $this->Auth->user());
         
         // Action da tela de login
-        $this->Auth->loginAction = array(
-            'controller' => 'vendedores',
-            'action' => 'login'
-        );
+        $this->Auth->loginAction = 'login';
     }
 }
 

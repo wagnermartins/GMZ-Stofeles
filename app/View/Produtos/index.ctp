@@ -1,13 +1,9 @@
-<nav id="secondary">
-    <ul>
-        <li class="current"><a href="#">Main tab</a></li>
-        <li><a href="#">Optional second tab</a></li>
-        <li><a href="#">Optional third tab</a></li>
-    </ul>
-</nav>
-
 <section id="content">
     <h2>Lista de produtos</h2>
+    
+    <?php if ($current_user['role'] == 'admin'): ?>       
+        <p><?php echo $this->Html->link('Novo produto', array('controller' => 'produtos', 'action' => 'add'), array('class' => 'button icon add')) ?></p>
+    <?php endif; ?>
     <div class="collum left">
         <table class="datatable">
             <thead>

@@ -36,17 +36,8 @@
           <header>
           
             <!-- Logo -->
-            <h1 id="logo">Admin Control Panel</h1>
-          
-            <!-- User info -->
-            <div id="userinfo">
-              <img src="img/avatar.png" alt="Bram Jetten" />
-              <div class="intro">
-                Welcome Bram<br />
-                You have <a href="#">3 new messages</a>
-              </div>
-            </div>
-          
+            <h1 id="logo">GMZ Stofeles</h1>
+   
           </header>
         
           <!-- The application "window" -->
@@ -55,66 +46,29 @@
             <!-- Primary navigation -->
             <nav id="primary">
               <ul>
-                <li class="current">
-                  <a href="/">
-                    <span class="icon dashboard"></span>
-                    Dashboard
-                  </a>
+                <li>
+                    <?php echo $this->Html->link('<span class="icon dashboard"></span>Vendas (F1)', array('controller' => 'vendas', 'action' => 'index'), array('escape' => false)) ?>
                 </li>
                 
                 <li>
-                  <a href="/forms">
-                    <span class="icon pencil"></span>
-                    Forms
-                  </a>
+                    <?php echo $this->Html->link('<span class="icon pencil"></span>Vendedores (F2)', array('controller' => 'vendedores', 'action' => 'index'), array('escape' => false)) ?>
                 </li>
                 
                 <li>
-                  <a href="/tables">
-                    <span class="icon tables"></span>
-                    DataTables
-                  </a>
+                    <?php echo $this->Html->link('<span class="icon tables"></span>Produtos (F3)', array('controller' => 'produtos', 'action' => 'index'), array('escape' => false)) ?>
                 </li>
 
                 <li>
-                  <a href="/charts">
-                    <span class="icon chart"></span>
-                    <span class="badge">4</span>
-                    Charts
-                  </a>
+                    <?php echo $this->Html->link('<span class="icon chart"></span>Estatísticas', array('controller' => 'pages', 'action' => 'stats'), array('escape' => false)) ?>
                 </li>
-                
-                <li>
-                  <a href="/notifications">
-                    <span class="icon modal"></span>
-                    Notifcations
-                  </a>
-                </li>
-                
-                <li>
-                  <a href="/gallery">
-                    <span class="icon gallery"></span>
-                    Gallery
-                  </a>
-                </li>
-
-                <li>
-                  <a href="/buttons">
-                    <span class="icon anchor"></span>
-                    Icons/buttons
-                  </a>
-                </li>               
               </ul>
-            
-              <input type="text" id="search" placeholder="Realtime search..." />
+                
             </nav>
-
             <?php echo $content_for_layout; ?>
-
+            
           </div>
         
-          <footer id="copyright">Theme design &amp; development by Bram Jetten in 2011</footer>
-          <?php echo $this->element('sql_dump'); ?>
+          <footer id="copyright">GMZ Stofeles</footer>
         </div>
       </div>
     </div>
