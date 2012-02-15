@@ -35,10 +35,6 @@ CREATE TABLE `itens_vendas` (
 -- Dumping data for table `itens_vendas`
 --
 
-INSERT INTO `itens_vendas` VALUES(1, 1, 1, 1);
-INSERT INTO `itens_vendas` VALUES(2, 1, 2, 1);
-INSERT INTO `itens_vendas` VALUES(3, 2, 2, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -59,9 +55,6 @@ CREATE TABLE `produtos` (
 --
 -- Dumping data for table `produtos`
 --
-
-INSERT INTO `produtos` VALUES(1, 'Camisa Polo I', 'Camisa Polo 100% AlgodÃ£o', 100.00, 299, '2012-02-15 04:58:19', '2012-02-15 05:02:46');
-INSERT INTO `produtos` VALUES(2, 'Camiseta Branca Lisa', 'Camiseta simples branca lisa', 39.90, 531, '2012-02-15 05:01:31', '2012-02-15 05:02:46');
 
 -- --------------------------------------------------------
 
@@ -84,8 +77,6 @@ CREATE TABLE `vendas` (
 --
 -- Dumping data for table `vendas`
 --
-
-INSERT INTO `vendas` VALUES(2, 1, 'CartÃ£o de CrÃ©dito', 139.90, 125.91, 10, '2012-02-15 05:02:46', '2012-02-15 05:02:46');
 
 -- --------------------------------------------------------
 
