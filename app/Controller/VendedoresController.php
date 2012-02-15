@@ -6,6 +6,8 @@ class VendedoresController extends AppController {
     public $uses = array('Vendedor');
     
     public function login() {
+        $this->layout = 'login';
+
         if($this->Auth->loggedIn()) {
             $this->redirect(array('controller' => 'vendas', 'action' => 'add'));    
         } else {            
@@ -13,7 +15,7 @@ class VendedoresController extends AppController {
                 if ($this->Auth->login()) {
                     $this->redirect($this->Auth->redirect());   
                 } else {
-                    $this->Session->setFlash('Your username/password combination was incorrect');
+                    $this->Session->setFlash('Seu username ou password estão incorretos');
                 }
             }
         }
