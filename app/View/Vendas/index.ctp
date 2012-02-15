@@ -11,8 +11,10 @@
                     <th>Produtos</th>
                     <th>Vendedor</th>
                     <th>Forma de pagamento</th>
-                    <th>Desconto total</th>
-                    <th>Valor Total</th>
+                    <th>Subtotal</th>
+                    <th>Total</th>
+                    <th>Desconto</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -20,11 +22,13 @@
                     <tr>
                         <td><?php echo $venda['Venda']['id']; ?></td>
                         <td><?php echo $this->Time->format('d/m/Y H:i:s', $venda['Venda']['created']); ?></td>
-                        <td><a href="#" class="button icon tag">Ver Produtos</a></td>
+                        <td><?php echo $this->Html->link("Ver Produtos", array("controller" => "vendas", "action" => "view", $venda['Venda']['id']), array("class" => "button icon tag")); ?></td>
                         <td><?php echo $venda['Vendedor']['nome'].' '.$venda['Vendedor']['sobrenome']; ?></td>
                         <td><?php echo $venda['Venda']['forma_pagamento']; ?></td>
-                        <td><?php //echo $venda['Venda']['celular']; ?></td>
-                        <td><?php echo $venda['Venda']['valor_total']; ?></td>
+                        <td><?php echo $this->Number->format($venda['Venda']['valor_subtotal'], array('before' => 'R$ ', 'decimals' => ',', 'thousands' => '.')) ?></td>
+                        <td><?php echo $this->Number->format($venda['Venda']['valor_total'], array('before' => 'R$ ', 'decimals' => ',', 'thousands' => '.')) ?></td>
+                        <td><?php echo $venda['Venda']['desconto']."%"; ?></td>
+                        <td><?php echo $this->Html->link("", array("controller" => "vendas", "action" => "delete", $venda['Venda']['id']), array("style" => "width:6px;", "class" => "button icon remove danger"), "Deseja cancelar essa venda? Os produtos serão repostos no estoque") ?></td>
                     </tr>        
                 <?php endforeach; ?>
             </tbody>

@@ -5,12 +5,13 @@ class AppController extends Controller {
         'Session',
         'Auth' => array(
             'authenticate' => array('Form' => array('userModel' => 'Vendedor')),
-            'loginRedirect' => array('controller' => 'pages', 'action' => ''),
+            'loginRedirect' => array('controller' => 'vendas', 'action' => 'add'),
             'logoutRedirect' => array('controller' => 'vendedores', 'action' => 'login')
         )
     );
     
     public function isAuthorized($user) {
+
         if ($user['role'] == 'admin') {
             return true;
         }
@@ -21,12 +22,13 @@ class AppController extends Controller {
         }
         return true;
     }
-       
+
     public function beforeFilter() {
         $this->Auth->authorize = 'controller';
         $this->set('logged_in', $this->Auth->loggedIn());
         $this->set('current_user', $this->Auth->user());
         
+        $this->Auth->allow("add");
         // Action da tela de login
         $this->Auth->loginAction = 'login';
     }

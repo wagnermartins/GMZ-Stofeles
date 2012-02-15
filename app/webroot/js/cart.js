@@ -7,7 +7,7 @@ $(document).ready(function() {
 	add = ".addToCart";
 	rmv = ".removeFromCart";
 	cartList = new Array();
-	forma_pagamento = $("select .forma_pagamento").val();
+	forma_pagamento = $(".forma_pagamento select");
 
 	/* 
 		SEARCH BAR UX 
@@ -18,7 +18,7 @@ $(document).ready(function() {
 	$(".desconto").focusout(function() {
 		if($(this).val() > 100) {
 			$(this).val("");
-			$(".cartResume .subtotal span").html(subtotal).formatCurrency({region: 'pt-BR' });
+			$(".cartResume .total span").html(subtotal).formatCurrency({region: 'pt-BR' });
 		}
 	});
 	$(".desconto").keyup(function() {
@@ -212,10 +212,21 @@ $(document).ready(function() {
 
 	$(".finalizarVenda").click(function(event) {
 		event.preventDefault();
-		href = $(this).attr("href");
-		$.post(href, { 'cart[]' : cartList, 'subtotal' : subtotal, 'total' : total, 'forma_pagamento' : forma_pagamento, 'desconto' : desconto }, function(data) {
-				alert(data);
-		});
+		if($(".desconto").val() == '') {
+			desconto = '0';
+		}
+
+		if(cartList != "") {
+		
+			$(this).hide();
+
+			href = $(this).attr("href");
+			
+			$.post(href, { 'cart[]' : cartList, 'subtotal' : subtotal, 'total' : total, 'forma_pagamento' : forma_pagamento.val(), 'desconto' : desconto }, function(data) {
+					alert("Venda efetuada com sucesso");
+					window.location = data;
+			});
+		}
 		
 	});
 

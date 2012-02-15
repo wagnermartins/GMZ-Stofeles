@@ -11,7 +11,7 @@
                
         <section>
             <label>Valor</label>
-            <div><?php echo $this->Form->input('valor', array('type' => 'text', 'class' => 'required valor', 'placeholder' => 'Valor')); ?></div>
+            <div><span style="position:relative; top:20px; right:20px;">R$</span><?php echo $this->Form->input('valor', array('type' => 'text', 'class' => 'required valor', 'placeholder' => 'Valor')); ?></div>
         </section>
 
         <section>

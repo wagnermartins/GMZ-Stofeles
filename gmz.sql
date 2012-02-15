@@ -20,6 +20,10 @@ SET time_zone = "+00:00";
 -- Banco de Dados: `gmz`
 --
 
+DROP DATABASE gmz;
+CREATE DATABASE gmz;
+USE gmz;
+
 -- --------------------------------------------------------
 
 --

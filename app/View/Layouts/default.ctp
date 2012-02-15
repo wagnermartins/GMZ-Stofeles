@@ -59,7 +59,11 @@
                 </li>
 
                 <li>
-                    <?php echo $this->Html->link('<span class="icon chart"></span>Estatísticas', array('controller' => 'pages', 'action' => 'stats'), array('escape' => false)) ?>
+                    <?php echo $this->Html->link('<span class="icon chart"></span>Estatísticas', array('controller' => '', 'action' => 'stats'), array('escape' => false)) ?>
+                </li>
+
+                <li>
+                    <?php echo $this->Html->link('<span class="icon modal"></span>Logout', array('controller' => '', 'action' => 'logout'), array('escape' => false)) ?>
                 </li>
               </ul>
                 
