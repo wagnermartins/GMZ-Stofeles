@@ -28,7 +28,7 @@ class AppController extends Controller {
         $this->set('logged_in', $this->Auth->loggedIn());
         $this->set('current_user', $this->Auth->user());
         
-        $this->Auth->allow("add");
+        $this->Auth->allow("add"); // Commentar depois do admin criado
         // Action da tela de login
         $this->Auth->loginAction = 'login';
     }

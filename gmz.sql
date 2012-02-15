@@ -108,5 +108,3 @@ CREATE TABLE `vendedores` (
 --
 -- Dumping data for table `vendedores`
 --
-
-INSERT INTO `vendedores` VALUES(1, 'Gabriel', 'Almeida', 'gabriel_almeida', '9d8d9fd02a16d9d723f8e94905146846955a9edc', 'gabriel.almeida.rj@gmail.com', '(21) 2751-5369', '(21) 7174-4813', 'Trav. Amarama Nascimento,26', 'SÃ£o JoÃ£o de Meriti', 'RJ', '119.105.647-37', '131931231941', '1994-02-28', 'admin', '2012-02-15 04:57:20', '2012-02-15 05:11:42');
