@@ -1,5 +1,9 @@
-<?php echo $this->Html->script(array('jquery.maskmoney')); ?>
-<section id="content">
+<?php echo $this->Html->script(array('jquery.maskmoney', 'jquery.formrestrict', 'jquery.alphanumeric')); ?>
+<script>
+$(document).ready(function() {
+   $(".quantidade").numeric();
+});
+</script><section id="content">
     <h2>Editar produto</h2>
     
     <?php echo $this->Form->create('Produto', array('class' => 'wymupdate', 'inputDefaults' => array('label' => false))); ?>
@@ -13,6 +17,11 @@
         <section>
             <label>Valor</label>
             <div><?php echo $this->Form->input('valor', array('type' => 'text', 'class' => 'required valor', 'placeholder' => 'Valor')); ?></div>
+        </section>
+
+        <section>
+            <label>Quantidade</label>
+            <div><?php echo $this->Form->input('quantidade', array('type' => 'text', 'class' => 'required quantidade', 'placeholder' => 'Disponibilidade em estoque')); ?></div>
         </section>
     </div>
     
