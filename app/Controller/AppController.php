@@ -31,6 +31,13 @@ class AppController extends Controller {
         $this->Auth->allow("add"); // Commentar depois do admin criado
         // Action da tela de login
         $this->Auth->loginAction = 'login';
+        
+        regTermica_DUAL_DarumaFramework('1');
+        $retorno = regPortaComunicacao_DUAL_DarumaFramework('COM3');
+        regLinhasGuilhotina_DUAL_DarumaFramework('05');
+        iEnviarBMP_DUAL_DarumaFramework('C:\logo.bmp');
+        regVelocidade_DUAL_DarumaFramework('115200');
+        return $retorno;
     }
 }
 
